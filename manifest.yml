@@ -1,0 +1,15 @@
+applications:
+- name: multidb
+  path: ./target/MultiDatabaseTest.war
+  memory: 1024m
+  buildpack: java_buildpack
+
+  env:
+    JBP_CONFIG_SPRING_AUTO_RECONFIGURATION: '{ enabled: false }'
+    HANA_FOR_ONBOARDING: 'a4948f3d-4da9-48a6-b2c5-15be6b535ca0'
+    HANA_WITH_APP_SCHEMA: 'hana-schema-1'
+
+  services:
+    - service-manager
+    - logger
+    - hana-schema-1
